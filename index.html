@@ -12,28 +12,136 @@
   <script src="js/amplitude.js" type="text/javascript"></script>
 
   <script>
-    debugger
-    var referendaSiteVersion = 1.0
+    var referendaSiteVersion = "1.0.0"
     amplitude.getInstance().setVersionName(referendaSiteVersion)
 
-    function logButtonPress() {
-      console.log(`logButtonPress`)
+    // Page exit:
+    //
+    window.onunload = function() {
+      console.log(`Exited page on ${getSlideName()} Slide.`)
+      // TODO: amplitude call
+    }
+    // Grab nav changes due to back button (does not catch the forward button)
+    //
+    document.onmouseover = function() {
+      //User's mouse is inside the page.
+      window.innerDocClick = true
+    }
+    //
+    document.onmouseleave = function() {
+      //User's mouse has left the page.
+      window.innerDocClick = false
+    }
+    //
+    var lastHashFromPress = ''
+    window.addEventListener('hashchange', function(event) {
+      var newHash = location.hash
+      if (window.innerDocClick) {
+        if (newHash !== lastHashFromPress) {
+          console.log(`The hash has changed due to an in-page action (i.e. swipe, nav button): ${newHash}`)
+
+          // TODO: amplitude call
+        }
+      } else {
+        if (newHash !== lastHashFromPress) {
+          console.log(`The hash has changed due to a browser button (i.e. back): ${newHash}`)
+
+          // TODO: amplitude call
+        }
+      }
+    }, false);
+
+    function getSlideName() {
+      var slideName = window.location.hash
+      if (!slideName) {
+        slideName = 'Home'
+      }
+
+      return slideName
     }
 
-    function logMenuBarPress() {
-      console.log(`logMenuBarPress`)
+    function getLinkName(caller) {
+      var linkName = caller.hash
+      if (!linkName) {
+        var link = caller.href
+        linkName = (link === 'http://twitter.com/stealthyinc') ?
+          'Twitter' : linkName
+      }
+
+      return linkName
+    }
+
+    function getButtonText(caller) {
+      var currentSlide = getSlideName()
+
+      if (currentSlide === '#Features') {
+        try {
+          var divName74_ = caller.childNodes[3]
+          var divCellLeftTop = divName74_.childNodes[1]
+          var h3 = divCellLeftTop.childNodes[1]
+          return h3.innerText
+        } catch (suppressedError) {
+        }
+      }
+      return '<UnknownButton>'
+    }
+
+    function logButtonPress(caller, event=undefined) {
+      lastHashFromPress = getLinkName(caller)
+
+      var buttonText = '<UnknownButton>'
+      try {
+        buttonText = (event !== undefined) ?
+          event.target.textContent : getButtonText(caller)
+      } catch (suppressedError) {
+      }
+      console.log(`logButtonPress: ${buttonText} Button Pressed on ${getSlideName()} Slide.`)
+
+      // TODO: amplitude call
+    }
+
+    function logLinkClick(linkDomain) {
+      console.log(`logButtonPress: ${linkDomain} Link Clicked on ${getSlideName()} Slide.`)
+
+      // TODO: amplitude call
+    }
+
+    function logHeaderPress(caller) {
+      lastHashFromPress = getLinkName(caller)
+      var event = `${lastHashFromPress} Header Pressed on ${getSlideName()} Slide.`
+      console.log(`logHeaderPress: ${event}`)
+
+      // TODO: amplitude call
+    }
+
+    function logFooterPress(caller) {
+      var linkName = getLinkName(caller)
+      if (!linkName) {
+        linkName = caller.textContent
+      }
+      var event = `${linkName} Footer Pressed on ${getSlideName()} Slide.`
+      console.log(`logFooterPress: ${event}`)
+
+      // TODO: amplitude call
+
     }
 
     function logCarouselDotPress() {
       console.log(`logCarouselDotPress`)
+      // TODO: amplitude call
     }
 
     function logSwipe() {
       console.log(`logSwipe`)
+      // TODO: amplitude call
     }
 
     function logLogoPress() {
-      console.log(`logLogoPress`)
+      lastHashFromPress = "#Home"
+      var event = `Logo Pressed on ${getSlideName()} Slide.`
+      console.log(`logLogoPress: ${event}`)
+
+      // TODO: amplitude call
     }
   </script>
 
@@ -124,14 +232,27 @@
 <!-- Panel Top #library/panel/panel-top-09.html -->
 <nav class="panel top firstSlideOnly ">
   <div class="sections desktop">
-    <div class="left"><a href="#" title="Slides Framework"><svg style="width:150px;height:50px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a></div>
+    <div class="left">
+      <a href="#Home"
+         title="Slides Framework"
+         onclick="logLogoPress()">
+        <svg style="width:150px;height:50px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+      </a>
+    </div>
     <div class="right">
       <ul class="menu uppercase trim">
-        <li><a href="#Features">Features</a></li>
-        <li><a href="#Testimonials">Testimonials</a></li>
-        <li><a href="#Media">Media</a></li>
-        <li><a href="#SignUp">Sign Up</a></li>
-        <li class="cropRight"><a href="http://twitter.com/stealthyinc" class="trimRight" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
+        <li><a href="#Features" onclick="logHeaderPress(this)">Features</a></li>
+        <li><a href="#Testimonials" onclick="logHeaderPress(this)">Testimonials</a></li>
+        <li><a href="#Media" onclick="logHeaderPress(this)">Media</a></li>
+        <li><a href="#SignUp" onclick="logHeaderPress(this)">Sign Up</a></li>
+        <li class="cropRight">
+          <a href="http://twitter.com/stealthyinc"
+             class="trimRight"
+             target="_blank"
+             onclick="logHeaderPress(this)">
+            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -152,22 +273,11 @@
       <li><a href="#Media">Media</a></li>
       <li><a href="#SignUp">Sign Up</a></li>
     </ul>
-    <ul class="subMenu small opacity-8">
-      <li><a href="#">FAQ</a></li>
-      <li><a href="#">Terms & Conditions</a></li>
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Contact Us</a></li>
-    </ul>
-    <ul class="social opacity-8">
-      <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
-      <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-      <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
-    </ul>
   </div>
 </nav>
 
 <!-- Slide 1 (#34) -->
-<section data-name="" data-title="Home" class="slide whiteSlide">
+<section data-name="Home" data-title="Home" class="slide whiteSlide">
   <div class="content">
     <div class="container">
       <div class="wrap">
@@ -177,9 +287,12 @@
             <li class="col-6-12 left middle">
               <h1 class="ae-1 fromLeft">Exponentially increase your grassroots campaign efforts</h1>
               <p class="ae-2 fromLeft"><span class="opacity-8">Our platform connects you to your verified constituents for fundraising and gathering feedback</span></p>
-              <a class="button blue gradient ae-3 fromCenter cropLeft" href="#SignUp">Sign Up</a>
-              <!-- <a class="button blue gradient ae-3 fromCenter cropLeft">Get Started</a> -->
-              <a class="button white ae-4 fromCenter" href="#Features">Learn More</a>
+              <a class="button blue gradient ae-3 fromCenter cropLeft"
+                 onclick="logButtonPress(this, event)"
+                 href="#SignUp">Sign Up</a>
+              <a class="button white ae-4 fromCenter"
+                 onclick="logButtonPress(this, event)"
+                 href="#Features">Learn More</a>
             </li>
             <li class="col-6-12">
               <img class="ae-4" width="605" src="assets/img/iphones-34.png" alt="iPhones Thumbnail"/>
@@ -205,7 +318,9 @@
         <div class="fix-12-12">
           <ul class="grid grid-74 later equal margin-top-5">
             <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter">
-              <a href="#Features" class="box-74">
+              <a href="#Features"
+                 onclick="logButtonPress(this)"
+                 class="box-74">
                 <div class="thumbnail-74">
                   <img src="assets/img/funding.jpg" class="wide" alt="Thumbnail"/>
                 </div>
@@ -218,7 +333,9 @@
               </a>
             </li>
             <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-4 fromCenter">
-              <a href="#Features" class="box-74">
+              <a href="#Features"
+                 onclick="logButtonPress(this)"
+                 class="box-74">
                 <div class="thumbnail-74">
                   <img src="assets/img/voter1.jpg" class="wide" alt="Thumbnail"/>
                 </div>
@@ -231,7 +348,9 @@
               </a>
             </li>
             <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
-              <a href="#Features" class="box-74">
+              <a href="#Features"
+                 onclick="logButtonPress(this)"
+                 class="box-74">
                 <div class="thumbnail-74">
                   <img src="assets/img/sentiment1.jpg" class="wide" alt="Thumbnail"/>
                 </div>
@@ -244,7 +363,9 @@
               </a>
             </li>
             <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
-              <a href="#Features" class="box-74">
+              <a href="#Features"
+                 onclick="logButtonPress(this)"
+                 class="box-74">
                 <div class="thumbnail-74">
                   <img src="assets/img/socialnetwork.jpg" class="wide" alt="Thumbnail"/>
                 </div>
@@ -310,7 +431,9 @@
             <li class="col-6-12 left">
               <h1 class="ae-2 fromLeft">Media Coverage</h1>
               <p class="ae-3 fromLeft"><span class="opacity-8">Some of the press coverage about the underlying technology that highlights how our platform works</span></p>
-              <ul class="tabs controller uppercase bold ae-4 fromCenter" data-slider-id="60-3">
+              <ul class="tabs controller uppercase bold ae-4 fromCenter"
+                  onclick="logButtonPress(this, event)"
+                  data-slider-id="60-3">
                 <li class="selected">TechCrunch</li>
                 <li>Bitcoin Magazine</li>
                 <li>Washington Post</li>
@@ -320,21 +443,27 @@
               <ul class="slider animated margin-top-4" data-slider-id="60-3">
                 <li class="selected fromCenter">
                   <div class="thumbnail shadow rounded" data-popup-id="60-1">
-                    <a href="https://techcrunch.com/2018/09/05/stealthy-wants-to-become-the-wechat-of-blockchain-apps/" target="_blank">
+                    <a href="https://techcrunch.com/2018/09/05/stealthy-wants-to-become-the-wechat-of-blockchain-apps/"
+                       onclick="logLinkClick('TechCrunch.com')"
+                       target="_blank">
                       <img class="wide" src="assets/img/disrupt.jpg" alt="Video Thumbnail"/>
                     </a>
                   </div>
                 </li>
                 <li class="fromCenter">
                   <div class="thumbnail shadow rounded" data-popup-id="60-2">
-                    <a href="https://bitcoinmagazine.com/articles/collaboration-tools-graphite-and-stealthy-create-decentralized-duo/" target="_blank">
+                    <a href="https://bitcoinmagazine.com/articles/collaboration-tools-graphite-and-stealthy-create-decentralized-duo/"
+                       onclick="logLinkClick('BitCoinMagazine.com')"
+                       target="_blank">
                       <img class="wide" src="assets/img/bitcoin.png" alt="Video Thumbnail"/>
                     </a>
                   </div>
                 </li>
                 <li class="fromCenter">
                   <div class="thumbnail shadow rounded" data-popup-id="60-3">
-                    <a href="https://www.washingtonpost.com/news/the-switch/wp/2018/03/23/the-new-technology-that-aspires-to-deletefacebook-for-good/?utm_term=.e0ddea16a3d1" target="_blank">
+                    <a href="https://www.washingtonpost.com/news/the-switch/wp/2018/03/23/the-new-technology-that-aspires-to-deletefacebook-for-good/?utm_term=.e0ddea16a3d1"
+                       onclick="logLinkClick('WashingtonPost.com')"
+                       target="_blank">
                       <img class="wide" src="assets/img/facebook.png" alt="Video Thumbnail"/>
                     </a>
                   </div>
@@ -372,7 +501,6 @@
               oninput="enableButtonIfText(document.getElementById('email').value)"/>
             <button class="button gray gradient" id="signupButton" name="button" onclick="storeEmailSignup(document.getElementById('email').value)" disabled=true>Sign Up</button>
           </form>
-          <!-- <p class="micro margin-top-3 ae-5"><span class="opacity-7">Already have an invite code?</span> <a href="#" class="bold">Sign In</a></p> -->
         </div>
 
       </div>
@@ -383,14 +511,32 @@
 <!-- Panel Bottom #10 -->
 <nav class="panel bottom lastSlideOnly forceMobileView">
   <div class="sections desktop">
-    <div class="left"><span class="opacity-8"><a href="#" title="Slides Framework"><svg style="width:150px;height:25px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a></span></div>
+    <div class="left">
+      <span class="opacity-8">
+        <a href="#Home"
+           title="Slides Framework"
+           onclick="logLogoPress()">
+          <svg style="width:150px;height:25px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+        </a>
+      </span>
+    </div>
     <div class="right">
       <ul class="menu uppercase trim">
         <!-- <li><a href="#">FAQ</a></li> -->
-        <li><a href="https://termsfeed.com/terms-conditions/8368d309d9e9f77e5a591212a88f6bbf" target="_blank">Terms & Conditions</a></li>
-        <li><a href="https://termsfeed.com/privacy-policy/997ddbd8f78bb8bd5e99dbcfa730ef09" target="_blank">Privacy Policy</a></li>
-        <li><a href="mailto:support@stealthy.im">Contact Us</a></li>
-        <li class="cropRight"><a href="http://twitter.com/stealthyinc" class="trimRight" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
+        <li><a href="https://termsfeed.com/terms-conditions/8368d309d9e9f77e5a591212a88f6bbf"
+               onclick="logFooterPress(this)"
+               target="_blank">Terms & Conditions</a></li>
+        <li><a href="https://termsfeed.com/privacy-policy/997ddbd8f78bb8bd5e99dbcfa730ef09"
+               onclick="logFooterPress(this)"
+               target="_blank">Privacy Policy</a></li>
+        <li><a href="mailto:support@stealthy.im"
+               onclick="logFooterPress(this)">Contact Us</a></li>
+        <li class="cropRight">
+          <a href="http://twitter.com/stealthyinc"
+             class="trimRight"
+             onclick="logFooterPress(this)"
+             target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a>
+        </li>
       </ul>
     </div>
   </div>
@@ -449,6 +595,10 @@
     firebase.database().ref('global/website/signup/').push({
       email: email,
     });
+
+    console.log(`logSignUpButtonPress: ${email}`)
+
+    // TODO: amplitude call
     // amplitude.getInstance().logEvent('');
   }
 
