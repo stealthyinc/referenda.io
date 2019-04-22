@@ -22,12 +22,24 @@
   ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
   ;e.amplitude=n})(window,document);
   //
-  // NOTE: Production & Development keys below. Comment out one or the other
-  //       depending if you are releasing or developing.
+  // TODO: Change production to true when deploying
   // TODO: Tie this to a config / build / env var.
+  const production = false;
+  const amplitudeKey = (production) ?
+    "ddc370cbb37b207e4c069790410a98ba" : "e94a4441f006e08a4e5c70c512ed302c";
   //
-  // Production Amplitude:
-  //amplitude.getInstance().init("ddc370cbb37b207e4c069790410a98ba");
-  //
-  // Test / Development Amplitude:
-  amplitude.getInstance().init("e94a4441f006e08a4e5c70c512ed302c");
+  amplitude.getInstance().init(
+    amplitudeKey,
+    null,
+    {
+      includeReferrer: true,
+      includeUtm: true ,
+    }
+  );
+
+  var dbg = false
+  function dbgLog(aString) {
+    if (dbg || !production) {
+      console.log(aString)
+    }
+  }

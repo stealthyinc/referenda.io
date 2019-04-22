@@ -18,9 +18,14 @@
     // Page exit:
     //
     window.onunload = function() {
-      console.log(`Exited page on ${getSlideName()} Slide.`)
-      // TODO: amplitude call
+      dbgLog(`Exited page on ${getSlideName()} Slide.`)
+
+      var eventProperties = {
+        'slide': getSlideName()
+      }
+      amplitude.getInstance().logEvent('Page Exited', eventProperties)
     }
+
     // Grab nav changes due to back button (does not catch the forward button)
     //
     document.onmouseover = function() {
@@ -38,15 +43,23 @@
       var newHash = location.hash
       if (window.innerDocClick) {
         if (newHash !== lastHashFromPress) {
-          console.log(`The hash has changed due to an in-page action (i.e. swipe, nav button): ${newHash}`)
+          dbgLog(`The hash has changed due to an in-page action (i.e. swipe, nav button): ${newHash}`)
 
-          // TODO: amplitude call
+          var eventProperties = {
+            'toSlide': newHash,
+            'trigger': 'swipe or nav button'
+          }
+          amplitude.getInstance().logEvent('Slide Changed', eventProperties)
         }
       } else {
         if (newHash !== lastHashFromPress) {
-          console.log(`The hash has changed due to a browser button (i.e. back): ${newHash}`)
+          dbgLog(`The hash has changed due to a browser button (i.e. back): ${newHash}`)
 
-          // TODO: amplitude call
+          var eventProperties = {
+            'toSlide': newHash,
+            'trigger': 'browser button'
+          }
+          amplitude.getInstance().logEvent('Slide Changed', eventProperties)
         }
       }
     }, false);
@@ -95,23 +108,34 @@
           event.target.textContent : getButtonText(caller)
       } catch (suppressedError) {
       }
-      console.log(`logButtonPress: ${buttonText} Button Pressed on ${getSlideName()} Slide.`)
+      dbgLog(`logButtonPress: ${buttonText} Button Pressed on ${getSlideName()} Slide.`)
 
-      // TODO: amplitude call
+      var eventProperties = {
+        'slide': getSlideName(),
+        'button': buttonText,
+      }
+      amplitude.getInstance().logEvent('Button Pressed', eventProperties)
     }
 
     function logLinkClick(linkDomain) {
-      console.log(`logButtonPress: ${linkDomain} Link Clicked on ${getSlideName()} Slide.`)
+      dbgLog(`logButtonPress: ${linkDomain} Link Clicked on ${getSlideName()} Slide.`)
 
-      // TODO: amplitude call
+      var eventProperties = {
+        'slide': getSlideName(),
+        'link': linkDomain,
+      }
+      amplitude.getInstance().logEvent('Link Clicked', eventProperties)
     }
 
     function logHeaderPress(caller) {
       lastHashFromPress = getLinkName(caller)
-      var event = `${lastHashFromPress} Header Pressed on ${getSlideName()} Slide.`
-      console.log(`logHeaderPress: ${event}`)
+      dbgLog(`logHeaderPress: ${lastHashFromPress} Header Pressed on ${getSlideName()} Slide.`)
 
-      // TODO: amplitude call
+      var eventProperties = {
+        'slide': getSlideName(),
+        'header': lastHashFromPress,
+      }
+      amplitude.getInstance().logEvent('Header Pressed', eventProperties)
     }
 
     function logFooterPress(caller) {
@@ -119,30 +143,60 @@
       if (!linkName) {
         linkName = caller.textContent
       }
-      var event = `${linkName} Footer Pressed on ${getSlideName()} Slide.`
-      console.log(`logFooterPress: ${event}`)
+      dbgLog(`logFooterPress: ${linkName} Footer Pressed on ${getSlideName()} Slide.`)
 
-      // TODO: amplitude call
-
+      var eventProperties = {
+        'slide': getSlideName(),
+        'footer': linkName,
+      }
+      amplitude.getInstance().logEvent('Footer Pressed', eventProperties)
     }
 
-    function logCarouselDotPress() {
-      console.log(`logCarouselDotPress`)
-      // TODO: amplitude call
-    }
+    // function logCarouselDotPress() {
+    //   dbgLog(`logCarouselDotPress`)
+    //   // TODO: amplitude call
+    // }
 
-    function logSwipe() {
-      console.log(`logSwipe`)
-      // TODO: amplitude call
-    }
+    // function logSwipe() {
+    //   dbgLog(`logSwipe`)
+    //   // TODO: amplitude call
+    // }
 
     function logLogoPress() {
       lastHashFromPress = "#Home"
       var event = `Logo Pressed on ${getSlideName()} Slide.`
-      console.log(`logLogoPress: ${event}`)
+      dbgLog(`logLogoPress: ${event}`)
 
-      // TODO: amplitude call
+      var eventProperties = {
+        'slide': getSlideName(),
+      }
+      amplitude.getInstance().logEvent('Logo Pressed', eventProperties)
     }
+
+    // Page Loaded:
+    //
+    function logPageLoad() {
+      var eventProperties = {
+        'slide': getSlideName()
+      }
+      amplitude.getInstance().logEvent('Page Loaded', eventProperties)
+
+      try {
+        // Grab t param if avail and store in identity
+        var urlString = window.location.href
+        var url = new URL(urlString)
+        var tCode = url.searchParams.get("t")
+        dbgLog(`logPageLoad: fetched tCode ${tCode}`)
+        if (tCode) {
+          var identify = new amplitude.Identify().set('tCode', tCode)
+          amplitude.getInstance().identify(identify);
+        }
+      } catch (suppressedError) {
+      }
+    }
+    //
+    logPageLoad()
+
   </script>
 
 </head>
@@ -499,7 +553,13 @@
               required=true
               multiple=false
               oninput="enableButtonIfText(document.getElementById('email').value)"/>
-            <button class="button gray gradient" id="signupButton" name="button" onclick="storeEmailSignup(document.getElementById('email').value)" disabled=true>Sign Up</button>
+            <button
+              class="button gray gradient"
+              id="signupButton"
+              name="button"
+              type="button"
+              onclick="storeEmailSignup()"
+              disabled=true>Sign Up</button>
           </form>
         </div>
 
@@ -591,15 +651,37 @@
   firebase.initializeApp(config);
   var database = firebase.database();
 
-  function storeEmailSignup(email) {
+  function storeEmailSignup() {
+    var email = document.getElementById('email').value
     firebase.database().ref('global/website/signup/').push({
       email: email,
     });
 
-    console.log(`logSignUpButtonPress: ${email}`)
+    dbgLog(`logSignUpButtonPress: ${email}`)
 
-    // TODO: amplitude call
-    // amplitude.getInstance().logEvent('');
+    var eventProperties = {
+      'slide': getSlideName(),
+      'email': email
+    }
+    amplitude.getInstance().logEvent('Email Submitted', eventProperties);
+
+    var identify = new amplitude.Identify().set('email', email)
+    amplitude.getInstance().identify(identify);
+
+    // Disable the button as feedback that submit has occured.
+    // TODO: A toast saying thanks
+    var signupButton = document.getElementById('signupButton')
+    if (signupButton) {
+      signupButton.disabled = true
+      signupButton.classList.remove('blue')
+      signupButton.classList.add('green')
+    }
+
+    var emailField = document.getElementById('email')
+    if (emailField) {
+      emailField.disabled = true
+      emailField.value = 'Sign up successful. Thanks!'
+    }
   }
 
   function enableButtonIfText(email) {
