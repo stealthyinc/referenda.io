@@ -100,6 +100,7 @@
     }
 
     function logButtonPress(caller, event=undefined) {
+      console.log("*********************PBJ****************")
       lastHashFromPress = getLinkName(caller)
 
       var buttonText = '<UnknownButton>'
@@ -200,7 +201,7 @@
   </script>
 
 </head>
-<body class="slides cards smooth simplifiedMobile smoothScroll animated">
+<body class="slides cards smooth simplifiedMobile smoothScroll noPreload animated">
 
 <!-- SVG Library -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -277,7 +278,7 @@
 </svg>
 
 <!-- Navigation -->
-<nav class="side medium stroke">
+<nav class="side stroke">
   <div class="navigation">
     <ul></ul>
   </div>
@@ -360,7 +361,7 @@
 </section>
 
 <!-- Slide 2 (#74) -->
-<section data-name="Features" data-title="Features" class="slide whiteSlide">
+<section data-name="Features" data-title="Features" class="slide fade-6 kenBurns">
   <div class="content">
     <div class="container">
       <div class="wrap">
@@ -369,9 +370,20 @@
           <h1 class="ae-1">Super charge your campaign 🚀</h1>
           <p class="ae-2"><span class="opacity-8">Our platform gives you the winning technological edge by leveraging the best of blockchain, social media, gamification, real-time analytics, and grassroots efforts.</span></p>
         </div>
-        <div class="fix-12-12">
-          <ul class="grid grid-74 later equal margin-top-5">
-            <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter">
+        <div class="fix-12-12">  
+          <ul class="grid fixedSpaces grid-69 equal equalMobile popupTrigger controller" data-popup-id="69" data-slider-id="69" >
+          <!-- <ul class="grid grid-74 later equal margin-top-5"> -->
+            <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
+              <div class="box-69 rounded ae-3 equalElement selected" style="background-image:url(assets/img/abstract-0.png);">
+                <div class="table cell-69 equalElement">
+                  <div class="cell">
+                    <h6 class="uppercase opacity-4 margin-bottom-1">Fundraising</h6>
+                    <h3 onmouseover="logButtonPress(this)" class="cropBottom">Collect donations or sell merch with Apple Pay, Google Pay, Square, or Bitcoin</h3>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter">
               <a href="#Features"
                  onclick="logButtonPress(this)"
                  class="box-74">
@@ -385,8 +397,18 @@
                   </div>
                 </div>
               </a>
+            </li> -->
+            <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
+              <div class="box-69 rounded ae-4 equalElement" style="background-image:url(assets/img/abstract-2.png);">
+                <div class="table cell-69 equalElement">
+                  <div class="cell">
+                    <h6 class="uppercase opacity-4 margin-bottom-1">Voter Outreach</h6>
+                    <h3 onmouseover="logButtonPress(this)" class="cropBottom">Register new voters, deputize volunteers, visualize progress, &amp; gamify outreach</h3>
+                  </div>
+                </div>
+              </div>
             </li>
-            <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-4 fromCenter">
+            <!-- <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-4 fromCenter">
               <a href="#Features"
                  onclick="logButtonPress(this)"
                  class="box-74">
@@ -400,8 +422,18 @@
                   </div>
                 </div>
               </a>
-            </li>
+            </li> -->
             <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
+              <div class="box-69 rounded ae-6 equalElement" style="background-image:url(assets/img/abstract-3.png);">
+                <div class="table cell-69 equalElement">
+                  <div class="cell">
+                    <h6 class="uppercase opacity-4 margin-bottom-1">Social Network</h6>
+                    <h3 onmouseover="logButtonPress(this)" class="cropBottom">Have a direct conversation with constituents to understand their problems</h3>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
               <a href="#Features"
                  onclick="logButtonPress(this)"
                  class="box-74">
@@ -415,8 +447,18 @@
                   </div>
                 </div>
               </a>
-            </li>
+            </li> -->
             <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
+              <div class="box-69 rounded ae-5 equalElement" style="background-image:url(assets/img/abstract-4.png);">
+                <div class="table cell-69 equalElement">
+                  <div class="cell">
+                    <h6 class="uppercase opacity-4 margin-bottom-1">Sentiment Research</h6>
+                    <h3 onmouseover="logButtonPress(this)" class="cropBottom">Detailed polling of the electorate to understand how well your message resonates</h3>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- <li class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-5 fromCenter">
               <a href="#Features"
                  onclick="logButtonPress(this)"
                  class="box-74">
@@ -430,17 +472,39 @@
                   </div>
                 </div>
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
 
       </div>
     </div>
   </div>
+  <div class="background" style="background-image:url(assets/img/background/img-38.jpg)"></div>
 </section>
 
+<!-- Popup Gallery -->
+<div class="popup animated" data-popup-id="69">
+  <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
+  <div class="content">
+    <div class="container">
+      <div class="wrap spaces">
+      
+        <ul class="slider inlineBlock clickable popupContent ae-1 fromCenter disableSelect" data-slider-id="69" style="display: inline-block;">
+          <li class="selected"><img class="rounded" src="assets/img/abstract-0.png" class="selected" alt="Image"/></li>
+          <li><img class="rounded" src="assets/img/abstract-2.png" alt="Image"/></li>
+          <li><img class="rounded" src="assets/img/abstract-3.png" alt="Image"/></li>
+          <li><img class="rounded" src="assets/img/abstract-4.png" alt="Image"/></li>
+          <!-- <li><img class="rounded" src="assets/img/gallery-69-full-5.jpg" alt="Image"/></li>
+          <li><img class="rounded" src="assets/img/gallery-69-full-6.jpg" alt="Image"/></li> -->
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 3 (#80) -->
-<section data-name="Testimonials" data-title="Testimonials" class="slide whiteSlide">
+<section data-name="Testimonials" data-title="Testimonials" class="slide fade-6 kenBurns">
   <div class="content">
     <div class="container">
       <div class="wrap">
@@ -472,10 +536,11 @@
       </div>
     </div>
   </div>
+  <div class="background" style="background-image:url(assets/img/background/img-14.jpg)"></div>
 </section>
 
 <!-- Slide 4 (#60) -->
-<section data-name="Media" data-title="Media" class="slide whiteSlide">
+<section data-name="Media" data-title="Media" class="slide fade-6 kenBurns">
   <div class="content">
     <div class="container">
       <div class="wrap">
@@ -530,6 +595,7 @@
       </div>
     </div>
   </div>
+  <div class="background" style="background-image:url(assets/img/background/img-22.jpg)"></div>
 </section>
 
 
@@ -561,11 +627,13 @@
               onclick="storeEmailSignup()"
               disabled=true>Sign Up</button>
           </form>
+          <!-- <p class="micro margin-top-3 ae-5"><span class="opacity-7">Already have an account?</span> <a href="https://www.app.referenda.io" class="bold">Sign In</a></p> -->
         </div>
 
       </div>
     </div>
   </div>
+  <div class="background" style="background-image:url(assets/img/background/img-12.jpg)"></div>
 </section>
 
 <!-- Panel Bottom #10 -->
