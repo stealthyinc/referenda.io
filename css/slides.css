@@ -2,7 +2,7 @@
 /*
 
    _____ _       _              _____  _____ _____
-  / ___/| (•)   | |           / ____// ____/ ____/  v 4.2.1
+  / ___/| (•)   | |           / ____// ____/ ____/  v 4.2.2
  | (___ | |_  __| | ___ ____ | |    | (___| (___
   \___ \| | |/ _` |/ _ / __/ | |     \___ \ ___ \
   ____) | | | (_| |  __\__ \ | |____ ____) |___) |
@@ -1075,6 +1075,8 @@ img.rounded {
   height: 100%;
   z-index: 100;
   -webkit-overflow-scrolling: touch;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 .content.scrollBar {
   overflow-y: auto;

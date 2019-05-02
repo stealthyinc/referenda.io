@@ -1,7 +1,7 @@
 /*
 
    _____ _       _                 _  _____
-  / ___/| (*)   | |               | |/ ___/  v 4.2.1
+  / ___/| (*)   | |               | |/ ___/  v 4.2.2
  | (___ | |_  __| | ___ ____      | | (___
   \___ \| | |/ _` |/ _ / __/  _   | |\___ \
   ____) | | | (_| |  __\__ \ | |__| |____) |
@@ -517,7 +517,7 @@ $(document).ready(function() { "use strict";
       if (window.smoothScroll && !window.isMobile){
 
         //lock default scroll
-        event.preventDefault();
+        //event.preventDefault();
 
         if (energy > 1500) { energy = 1500; }
         if (energy < -1000) { energy = -1500; }
@@ -572,7 +572,7 @@ $(document).ready(function() { "use strict";
 
           if (window.smoothScroll){
             //lock default scroll
-            event.preventDefault();
+            //event.preventDefault();
 
             //smooth scroll
             if (energy > 1500) { energy = 1500; }
