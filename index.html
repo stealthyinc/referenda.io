@@ -49,7 +49,7 @@
   <script src="js/amplitude.js" type="text/javascript"></script>
 
   <script>
-    var referendaSiteVersion = "1.0.0"
+    var referendaSiteVersion = "1.0.1"
     amplitude.getInstance().setVersionName(referendaSiteVersion)
 
     // Page exit:
@@ -150,7 +150,6 @@
     }
 
     function logButtonPress(caller, event=undefined) {
-      console.log("*********************PBJ****************")
       lastHashFromPress = getLinkName(caller)
 
       var buttonText = '<UnknownButton>'
@@ -364,9 +363,7 @@
       <li><a href="#Fundraising">Fundraising</a></li>
       <li><a href="#Campaigning">Campaigning</a></li>
       <li><a href="#Organizing">Organizing</a></li>
-      <!-- <li><a href="#Features">Features</a></li> -->
       <li><a href="#Testimonials">Testimonials</a></li>
-      <!-- <li><a href="#Media">Media</a></li> -->
       <li><a href="#SignUp">Sign Up</a></li>
     </ul>
   </div>
@@ -401,25 +398,6 @@
   </div>
 </section>
 
-<!-- Popup Gallery -->
-<!--div class="popup animated" data-popup-id="69">
-  <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
-  <div class="content">
-    <div class="container">
-      <div class="wrap spaces">
-
-        <ul class="slider inlineBlock clickable popupContent ae-1 fromCenter disableSelect" data-slider-id="69" style="display: inline-block;">
-          <li class="selected"><img class="rounded" src="assets/img/funding.jpg" class="selected" alt="Image"/></li>
-          <li><img class="rounded" src="assets/img/voter1.jpg" alt="Image"/></li>
-          <li><img class="rounded" src="assets/img/sentiment1.jpg" alt="Image"/></li>
-          <li><img class="rounded" src="assets/img/socialnetwork.jpg" alt="Image"/></li>
-        </ul>
-
-      </div>
-    </div>
-  </div>
-</div-->
-
 <!-- Slide 2 (#89) -->
 <section data-name="Fundraising" data-title="Fundraising" class="slide whiteSlide">
   <div class="content">
@@ -431,7 +409,7 @@
             <li class="col-6-12 fromBottomLeft">
               <!--p class="opacity-6 margin-bottom-2 ae-1"></p-->
               <h1 class="ae-2">Fundraising</h1>
-              <div class="ae-3"><p class="opacity-8">Powerful tools for fundraising anywhere, anytime.</p></div>
+              <div class="ae-3"><p class="opacity-8">Powerful tools for fundraising anywhere, anytime:</p></div>
               <ul class="flex">
                 <li class="col-6-12 ae-3">
                   <h3 class="margin-top-3">Collect Donations</h3>
@@ -446,14 +424,6 @@
                      onclick="logButtonPress(this, event)"
                      href="#SignUp">Sign Up</a>
                 </li>
-                <!-- <li class="col-6-12 ae-5">
-                  <h3 class="margin-top-3">Prabhaav TODO</h3>
-                  <p class="tiny opacity-6">Probably something around goal setting and tracking.</p>
-                </li>
-                <li class="col-6-12 ae-6">
-                  <h3 class="margin-top-3">Prabhaav TODO</h3>
-                  <p class="tiny opacity-6">Probably something around gamification or compliance / reporting.</p>
-                </li> -->
               </ul>
             </li>
             <li class="col-1-12">&nbsp;</li>
@@ -469,22 +439,6 @@
   </div>
 </section>
 
-<!-- Popup Video -->
-<!--div class="popup autoplay" data-popup-id="89-1">
-  <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-        <div class="fix-10-12">
-          <div class="embedVideo popupContent">
-            <iframe src="https://www.youtube.com/embed/g8yBqxTiHSs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div-->
-
 <!-- Slide 2 (#89) -->
 <section data-name="Campaigning" data-title="Campaigning" class="slide whiteSlide">
   <div class="content">
@@ -494,36 +448,32 @@
         <div class="fix-12-12">
           <ul class="flex left">
             <li class="col-6-12 fromBottomLeft">
-              <!--p class="opacity-6 margin-bottom-2 ae-1">Case study</p-->
               <h1 class="ae-2">Campaigning</h1>
-              <div class="ae-3"><p class="opacity-8">Reliable tools to grow and engage the electorate, ensuring they Get Out To Vote (GOTV).</p></div>
+              <div class="ae-3"><p class="opacity-8">Reliable tools to grow and engage the electorate, ensuring they Get Out To Vote (GOTV). A few examples of what we offer:</p></div>
               <ul class="flex">
-                <li class="col-6-12 ae-3">
-                  <h3 class="margin-top-3">Voter Registration</h3>
-                  <p class="tiny opacity-6">Resources to help register new voters because adding voters is way easier than converting existing ones.</p>
-                </li>
                 <li class="col-6-12 ae-4">
                   <h3 class="margin-top-3">Sentiment Research</h3>
-                  <!-- <p class="tiny opacity-6">Understand your supporters and what issues are important to them with customizable questionaires and convenient analytics.</p> -->
-                  <p class="tiny opacity-6">Understand your supporters and what issues are important to them with customizable questionaires.</p>
+                  <p class="tiny opacity-6">Customizable questionaires and visualization tools to understand electorate sentiment and issue importance.</p>
+                </li>
+                <li class="col-6-12 ae-5">
+                  <h3 class="margin-top-3">Get Voters</h3>
+                  <p class="tiny opacity-6">Elections are won by getting voters to the polls. Referenda helps  supporters distribute messages through their friend networks to virally grow your base.</p>
+                  <!-- <p class="tiny opacity-6">Elections are won by getting voters to the polls. Referenda lets you easily leverage friend networks, the  to virally grow your audience!</p>
+                  <p class="tiny opacity-6">Elections are won by getting voters to the polls. Our GOTV reminders and motivators are the best.</p> -->
                 </li>
                 <li class="col-6-12 ae-5 margin-top-3">
                   <a class="button blue gradient ae-3 fromCenter cropLeft"
                      onclick="logButtonPress(this, event)"
                      href="#SignUp">Sign Up</a>
                 </li>
-                <!-- <li class="col-6-12 ae-5">
-                  <h3 class="margin-top-3">GOTV</h3>
-                  <p class="tiny opacity-6">Elections are won by getting voters to the polls. Our GOTV reminders and motivators are the best.</p>
+                <!-- <li class="col-6-12 ae-3">
+                  <h3 class="margin-top-3">Voter Registration</h3>
+                  <p class="tiny opacity-6">Resources to help register new voters because adding voters is way easier than converting existing ones.</p>
                 </li> -->
               </ul>
             </li>
             <li class="col-1-12">&nbsp;</li>
             <li class="col-5-12 bottom">
-              <!-- <div class="videoThumbnail shadow rounded popupTrigger margin-bottom-3 ae-7" data-popup-id="89-1">
-                <img src="assets/img/image-89-1.jpg" class="wide" alt="Video Thumbnail"/>
-              </div> -->
-              <!-- <img src="assets/img/sentiment1.jpg" class="shadow rounded ae-8" alt="Image"/> -->
               <img src="assets/img/voter1.jpg" class="shadow rounded ae-8" alt="Image"/>
             </li>
           </ul>
@@ -534,22 +484,6 @@
   </div>
 </section>
 
-<!-- Popup Video -->
-<!-- <div class="popup autoplay" data-popup-id="89-1">
-  <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-        <div class="fix-10-12">
-          <div class="embedVideo popupContent">
-            <iframe src="https://www.youtube.com/embed/g8yBqxTiHSs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <!-- Slide 2 (#89) -->
 <section data-name="Organizing" data-title="Organizing" class="slide whiteSlide">
   <div class="content">
@@ -559,14 +493,12 @@
         <div class="fix-12-12">
           <ul class="flex left">
             <li class="col-6-12 fromBottomLeft">
-              <!-- <p class="opacity-6 margin-bottom-2 ae-1">Case study</p> -->
               <h1 class="ae-2">Organizing</h1>
-              <div class="ae-3"><p class="opacity-8">Innovative tools to grow and motivate your staff and volunteers.</p></div>
+              <div class="ae-3"><p class="opacity-8">Innovative tools to grow and motivate your staff and volunteers:</p></div>
               <ul class="flex">
                 <li class="col-6-12 ae-3">
-                  <h3 class="margin-top-3">Add Volunteers</h3>
-                  <!-- <p class="tiny opacity-6">Passionate supporters make great volunteers. Even if they're not pounding the pavement, spreading the word to their contacts makes all the difference!</p> -->
-                  <p class="tiny opacity-6">Passionate supporters make great volunteers. Easily leverage social graphs to virally grow your audience!</p>
+                  <h3 class="margin-top-3">Recruit Volunteers</h3>
+                  <p class="tiny opacity-6">Passionate supporters make great volunteers who can multiply your campaign effort with little overhead.</p>
                 </li>
                 <li class="col-6-12 ae-4">
                   <h3 class="margin-top-3">High Scores</h3>
@@ -581,9 +513,6 @@
             </li>
             <li class="col-1-12">&nbsp;</li>
             <li class="col-5-12 bottom">
-              <!-- <div class="videoThumbnail shadow rounded popupTrigger margin-bottom-3 ae-7" data-popup-id="89-1">
-                <img src="assets/img/image-89-1.jpg" class="wide" alt="Video Thumbnail"/>
-              </div> -->
               <img src="assets/img/socialnetwork.jpg" data-action="zoom" class="shadow rounded ae-8" alt="Image"/>
             </li>
           </ul>
@@ -593,22 +522,6 @@
     </div>
   </div>
 </section>
-
-<!-- Popup Video -->
-<!-- <div class="popup autoplay" data-popup-id="89-1">
-  <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-        <div class="fix-10-12">
-          <div class="embedVideo popupContent">
-            <iframe src="https://www.youtube.com/embed/g8yBqxTiHSs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!-- Slide 3 (#80) -->
 <section data-name="Testimonials" data-title="Testimonials" class="slide fade-6 kenBurns whiteSlide">
@@ -643,104 +556,7 @@
       </div>
     </div>
   </div>
-  <!-- <div class="background" style="background-image:url(assets/img/background/img-14.jpg)"></div> -->
 </section>
-
-<!-- Slide 4 (#60) -->
-<!-- <section data-name="Media" data-title="Media" class="slide fade-6 kenBurns">
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-
-        <div class="fix-12-12">
-          <ul class="grid">
-            <li class="col-6-12 left">
-              <h1 class="ae-2 fromLeft">Learn about the team</h1>
-              <p class="ae-3 fromLeft"><span class="opacity-8">Some of the press coverage about the underlying technology that highlights how our platform works</span></p>
-              <ul class="tabs controller uppercase bold ae-4 fromCenter"
-                  onclick="logButtonPress(this, event)"
-                  data-slider-id="60-3">
-                <li class="selected">TechCrunch</li>
-                <li>Bitcoin Magazine</li>
-                <li>Washington Post</li>
-              </ul>
-            </li>
-            <li class="col-6-12 left ae-5 fromCenter">
-              <ul class="slider animated margin-top-4" data-slider-id="60-3">
-                <li class="selected fromCenter">
-                  <div class="thumbnail shadow rounded" data-popup-id="60-1">
-                    <a href="https://techcrunch.com/2018/09/05/stealthy-wants-to-become-the-wechat-of-blockchain-apps/"
-                       onclick="logLinkClick('TechCrunch.com')"
-                       target="_blank">
-                      <img class="wide" src="assets/img/disrupt.jpg" alt="Video Thumbnail"/>
-                    </a>
-                  </div>
-                </li>
-                <li class="fromCenter">
-                  <div class="thumbnail shadow rounded" data-popup-id="60-2">
-                    <a href="https://bitcoinmagazine.com/articles/collaboration-tools-graphite-and-stealthy-create-decentralized-duo/"
-                       onclick="logLinkClick('BitCoinMagazine.com')"
-                       target="_blank">
-                      <img class="wide" src="assets/img/bitcoin.png" alt="Video Thumbnail"/>
-                    </a>
-                  </div>
-                </li>
-                <li class="fromCenter">
-                  <div class="thumbnail shadow rounded" data-popup-id="60-3">
-                    <a href="https://www.washingtonpost.com/news/the-switch/wp/2018/03/23/the-new-technology-that-aspires-to-deletefacebook-for-good/?utm_term=.e0ddea16a3d1"
-                       onclick="logLinkClick('WashingtonPost.com')"
-                       target="_blank">
-                      <img class="wide" src="assets/img/facebook.png" alt="Video Thumbnail"/>
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="background" style="background-image:url(assets/img/background/img-22.jpg)"></div>
-</section> -->
-
-
-<!-- Slide 5 (#38) -->
-<!-- <section data-name="SignUp" data-title="Sign Up" class="slide fade-6 kenBurns">
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-
-        <div class="fix-7-12">
-          <svg class="wide ae-1 fromCenter"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
-          <p class="margin-top-2 ae-3"><span class="opacity-8">Take your campaign from door-to-door knocking to your constituents living room.</span></p>
-
-          <form class="slides-form ae-4" action="#" autocomplete="off">
-            <input
-              type="email"
-              class="input-38"
-              id="email"
-              name="email"
-              placeholder="Email address (xxxx@yyy.com)"
-              required=true
-              multiple=false
-              oninput="enableButtonIfText(document.getElementById('email').value)"/>
-            <button
-              class="button gray gradient"
-              id="signupButton"
-              name="button"
-              type="submit"
-              onclick="storeEmailSignup()"
-              disabled=true>Sign Up</button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="background" style="background-image:url(assets/img/background/img-12.jpg)"></div>
-</section> -->
 
 <!-- White Slide #55 -->
 <section data-name="SignUp" data-title="Sign Up" class="slide fade-6 whiteSlide">
@@ -852,9 +668,7 @@
       <li><a href="mailto:support@stealthy.im">Contact Us</a></li>
     </ul>
     <ul class="social opacity-8">
-      <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li> -->
       <li><a href="https://twitter.com/stealthyinc"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-      <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li> -->
     </ul>
   </div>
 </nav>
@@ -919,7 +733,7 @@
     amplitude.getInstance().logEvent('Email Submitted', eventProperties);
 
     var identify = new amplitude.Identify().set('email', email)
-    identity.set('name', name)
+    identify.set('name', name)
     amplitude.getInstance().identify(identify);
 
     // Disable the button as feedback that submit has occured.
@@ -929,12 +743,7 @@
       signupButton.disabled = true
       signupButton.classList.remove('blue')
       signupButton.classList.add('green')
-    }
-
-    var emailField = document.getElementById('email')
-    if (emailField) {
-      emailField.disabled = true
-      emailField.value = 'Sign up successful. Thanks!'
+      signupButton.textContent = "Thanks! We'll be in touch."
     }
   }
 
@@ -956,14 +765,5 @@
     }
   }
 </script>
-
-
-<!-- Custom Styles -->
-<!-- <link href="css/custom.css" rel="stylesheet" type="text/css"> -->
-
-<!-- Custom Scripts -->
-<!-- <script src="js/custom.js" type="text/javascript"></script> -->
-
-
 </body>
 </html>
