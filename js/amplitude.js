@@ -24,7 +24,7 @@
   //
   // TODO: Change production to true when deploying
   // TODO: Tie this to a config / build / env var.
-  const production = false;
+  const production = true;
   const amplitudeKey = (production) ?
     "ddc370cbb37b207e4c069790410a98ba" : "e94a4441f006e08a4e5c70c512ed302c";
   //

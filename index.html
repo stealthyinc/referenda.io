@@ -18,6 +18,16 @@
   <link href="css/swiper.min.css" rel="stylesheet" type="text/css">
   <script src="js/swiper.min.js" type="text/javascript"></script>
 
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.referenda.io" />
+  <meta name="twitter:site" content="@stealthyinc" />
+  <meta name="twitter:title" content="Referenda" />
+  <meta name="twitter:description" content="Increasing Political Engagement" />
+  <meta name="twitter:image" content="https://www.referenda.io/assets/homepage.png" />
+
   <!-- Fonts and Material Icons -->
   <link rel="stylesheet" as="font" href="https://fonts.googleapis.com/css?family=Nunito:100,300,400,500,600,800|Nunito:300|Nunito:600|Material+Icons"/>
   <style type="text/css">
@@ -540,7 +550,7 @@
           <ul class="flex grid-80 fixedSpaces equal reverse">
             <li class="col-6-12">
               <div class="box-80 padding-4 equalElement left ae-3 rounded">
-                <p class="ae-5"><span class="opacity-8">I think design would be better if designers were much more skeptical about its applications. If you believe in the potency of your craft, where you choose to dole it out is not something to take lightly.</span></p>
+                <p class="ae-5"><span class="opacity-8">"Referenda is designed to enable representatives to be proximate to their constituents, allowing meaningful communications without the well known privacy risks and irrelevant noise inherent in current social media platforms."</span></p>
                 <div class="margin-top-5 ae-6">
                   <h3>Agatha Bacelar</h3>
                   <p class="tiny opacity-6 cropBottom">2020 Candidate for US Congress CA 12</p>
@@ -619,7 +629,8 @@
     </div>
     <div class="right">
       <ul class="menu uppercase trim">
-        <li><a href="https://www.referenda.io/about">About Us</a></li>
+        <li>&copy; 2019 Stealthy Inc.</li>
+        <li><a href="/about">About Us</a></li>
         <li><a href="https://termsfeed.com/terms-conditions/8368d309d9e9f77e5a591212a88f6bbf"
                onclick="logFooterPress(this)"
                target="_blank">Terms & Conditions</a></li>
@@ -662,6 +673,7 @@
       <li><a href="#SignUp">Sign Up</a></li>
     </ul>
     <ul class="subMenu small opacity-8">
+      <li>&copy; 2019 Stealthy Inc.</li>
       <li><a href="/about">About Us</a></li>
       <li><a href="https://termsfeed.com/terms-conditions/8368d309d9e9f77e5a591212a88f6bbf" target="_blank">Terms & Conditions</a></li>
       <li><a href="https://termsfeed.com/privacy-policy/997ddbd8f78bb8bd5e99dbcfa730ef09" target="_blank">Privacy Policy</a></li>
@@ -694,9 +706,11 @@
   setInitialButtonStyle()
 </script>
 
-
 <!-- Firebase Things -->
-<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-database.js"></script>
+
 <script>
   // Initialize Firebase
   var config = {
