@@ -28,6 +28,12 @@
   <meta name="twitter:description" content="Increasing Political Engagement" />
   <meta name="twitter:image" content="https://www.referenda.io/assets/homepage.png" />
 
+  <!-- prefetch / opt. speed -->
+  <link rel="dns-prefetch" href="https://www.referenda.io/">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+  <link rel="dns-prefetch" href="https://ajax.googleapis.com/">
+  <link rel="dns-prefetch" href="https://www.gstatic.com/">
+
   <!-- Fonts and Material Icons -->
   <link rel="stylesheet" as="font" href="https://fonts.googleapis.com/css?family=Nunito:100,300,400,500,600,800|Nunito:300|Nunito:600|Material+Icons"/>
   <style type="text/css">
@@ -313,12 +319,12 @@
   <div class="content">
     <div class="container">
       <div class="wrap">
-      
+
         <div class="fix-10-12 toCenter">
           <h1 class="ae-1">Donations</h1>
           <p class="ae-2"><span class="opacity-8">Campaign for U.S. Congress, CA District 12 (San Francisco)</span></p>
         </div>
-        <div class="fix-12-12">  
+        <div class="fix-12-12">
           <ul class="grid fixedSpaces grid-69 equal equalMobile popupTrigger controller">
             <li class="col-3-12 col-tablet-1-2 col-phablet-1-1" style="background: #F5FBFE">
               <div class="price ae-5"><span class="currency">$</span>3</div>
@@ -365,7 +371,7 @@
   <div class="content">
     <div class="container">
       <div class="wrap spaces">
-      
+
         <ul class="slider inlineBlock clickable popupContent ae-1 fromCenter disableSelect" data-slider-id="69" style="display: inline-block;">
           <li class="selected"><img class="rounded" src="assets/img/gallery-69-full-1.jpg" class="selected" alt="Image"/></li>
           <li><img class="rounded" src="assets/img/gallery-69-full-2.jpg" alt="Image"/></li>
@@ -374,7 +380,7 @@
           <li><img class="rounded" src="assets/img/gallery-69-full-5.jpg" alt="Image"/></li>
           <li><img class="rounded" src="assets/img/gallery-69-full-6.jpg" alt="Image"/></li>
         </ul>
-        
+
       </div>
     </div>
   </div>
@@ -419,33 +425,38 @@
     <div class="container">
       <div class="wrap">
 
-        <h1 class="ae-1">Get in touch to learn more about Agatha's platform.</h1>
-        <!-- <p class="ae-2">
-          <span class="opacity-8">Get in touch to learn more and find out about our revolutionary social network.</span>
-        </p> -->
+        <h1 class="">Get in touch to learn more about Agatha's platform.</h1>
         <div class="form-55">
-          <div class="pad shadow left selected ae-3">
+          <div class="pad shadow left selected">
             <!-- TODO get email working by comment/debug the following line -->
             <!-- <form action="ajax-email.php" id="contact-form" method="post" class="slides-form wide" data-ajax-form="true"> -->
             <form id="contact-form" method="post" class="slides-form wide" data-ajax-form="true">
+
               <ul class="grid noSpaces">
                 <li class="col-6-12 form-55-input-1">
-                  <div class="label ae-5"><label class="left opacity-5" for="name55">Your name</label></div>
-                  <input class="ae-6" id="name55" type="name" name="name" placeholder="Name"
+                  <div class="label"><label class="left opacity-5" for="name55">Your name</label></div>
+                  <input class="" id="name55" type="name" name="name" placeholder="Name"
                          oninput="enableButtonIfText()" required/>
                 </li>
                 <li class="col-6-12 form-55-input-2">
-                  <div class="label ae-5"><label class="left opacity-5" for="email55">Email address</label></div>
-                  <input class="ae-6" id="email55" type="email" name="email" placeholder="Email"
+                  <div class="label"><label class="left opacity-5" for="email55">Email address</label></div>
+                  <input class="" id="email55" type="email" name="email" placeholder="Email"
                          oninput="enableButtonIfText()" required/>
                 </li>
+                <li class="col-6-12 form-55-input-1">
+                  <div class="label"><label class="left opacity-5" for="phone55">Phone number (Optional)</label></div>
+                  <input class="" id="phone55" type="tel" name="phone" placeholder="Phone number" required/>
+                </li>
+                <li class="col-6-12 form-55-input-2">
+                  <div class="label"><label class="left opacity-5" for="zip55">Zip code</label></div>
+                  <input class="" id="zip55" type="text" name="zip" placeholder="Zip code" oninput="enableButtonIfText()" required/>
+                </li>
               </ul>
-              <div class="label ae-8"><label class="opacity-5" for="message55">Message</label></div>
-              <textarea class="left wide ae-9" id="message55" type="text" name="message" placeholder="Message" required></textarea>
+
               <button
                 id="signupButton"
                 type="submit"
-                class="button wide gray gradient ae-10 margin-top-2 cropBottom"
+                class="button wide gray gradient margin-top-2 cropBottom"
                 data-success-text="Done!"
                 data-success-class="message-sent"
                 onclick="storeEmailSignup()"
@@ -485,5 +496,78 @@
   </div>
 </nav>
 
+  <!-- Firebase Things -->
+  <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-database.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCJBdS17-YQw3PtkLgp9kgjtrWrnMSlhro",
+      authDomain: "referenda-d2929.firebaseapp.com",
+      databaseURL: "https://referenda-d2929.firebaseio.com",
+      projectId: "referenda-d2929",
+      storageBucket: "referenda-d2929.appspot.com",
+      messagingSenderId: "912408303464"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
+
+    function storeEmailSignup() {
+      var name = document.getElementById('name55').value
+      var email = document.getElementById('email55').value
+      var phone = document.getElementById('phone55').value
+      var zip = document.getElementById('zip55').value
+
+      firebase.database().ref('global/website/campaign/agatha-bacelar/signup/').push({
+        name: name,
+        email: email,
+        phone: phone,
+        zip: zip,
+      });
+
+      console.log('storeEmailSignup:')
+      console.log(`  name: ${name}`)
+      console.log(`  email: ${email}`)
+      console.log(`  phone: ${phone}`)
+      console.log(`  zip: ${zip}`)
+
+      // Disable the button as feedback that submit has occured.
+      // TODO: A toast saying thanks
+      var signupButton = document.getElementById('signupButton')
+      if (signupButton) {
+        signupButton.disabled = true
+        signupButton.classList.remove('blue')
+        signupButton.classList.add('green')
+        signupButton.textContent = "Thanks! We'll be in touch."
+      }
+    }
+
+    function enableButtonIfText() {
+      var name = document.getElementById('name55').value
+      var email = document.getElementById('email55').value
+      var zip = document.getElementById('zip55').value
+      var zipProc = undefined
+      if (zip) {
+        zipProc = zip.trim()
+      }
+
+      var signupButton = document.getElementById('signupButton')
+      if (signupButton) {
+        if ((email && email.length > 0) &&
+            (name && name.length > 0) &&
+            (zipProc && zipProc.length >= 5)) {
+          signupButton.disabled = false
+          signupButton.classList.remove('gray')
+          signupButton.classList.add('blue')
+        } else {
+          signupButton.disabled = true
+          signupButton.classList.remove('blue')
+          signupButton.classList.add('gray')
+        }
+      }
+    }
+  </script>
 </body>
 </html>
