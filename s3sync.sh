@@ -5,6 +5,7 @@ aws s3 sync js s3://www.referenda.io/js --delete --cache-control max-age=36000,p
 aws s3 sync manual s3://www.referenda.io/manual --delete --cache-control max-age=36000,public --acl public-read
 aws s3 sync scss s3://www.referenda.io/scss --delete --cache-control max-age=36000,public --acl public-read
 aws s3 sync about s3://www.referenda.io/about --delete --cache-control max-age=36000,public --acl public-read
+aws s3 sync agatha s3://www.referenda.io/agatha --delete --cache-control max-age=36000,public --acl public-read
 aws s3 sync icons s3://www.referenda.io/icons --delete --cache-control max-age=36000,public --acl public-read
 aws s3 cp _open-generator.url s3://www.referenda.io/_open-generator.url --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --content-type text/html --acl public-read
 aws s3 cp _first-steps.url s3://www.referenda.io/_first-steps.url --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --content-type text/html --acl public-read
