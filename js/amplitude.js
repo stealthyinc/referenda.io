@@ -24,7 +24,8 @@
   //
   var isProduction = false;
   try {
-    isProduction = (window.location.hostname === 'www.referenda.io')
+    isProduction = (window.location.hostname.startsWith('www.referenda.io') ||
+                    window.location.hostname.startsWith('referenda.io'))
   } catch (suppressedError) {
     console.log(`Suppressed error configuring amplitude:\n${suppressedError}`)
   }
