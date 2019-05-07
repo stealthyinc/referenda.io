@@ -22,24 +22,18 @@
   ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
   ;e.amplitude=n})(window,document);
   //
-  // TODO: Change production to true when deploying
-  // TODO: Tie this to a config / build / env var.
-  const production = true;
-  const amplitudeKey = (production) ?
+  var isProduction = false;
+  try {
+    isProduction = (window.location.hostname === 'www.referenda.io')
+  } catch (suppressedError) {
+    console.log(`Suppressed error configuring amplitude:\n${suppressedError}`)
+  }
+  const amplitudeKey = (isProduction) ?
     "ddc370cbb37b207e4c069790410a98ba" : "e94a4441f006e08a4e5c70c512ed302c";
-  //
   amplitude.getInstance().init(
-    amplitudeKey,
-    null,
-    {
-      includeReferrer: true,
-      includeUtm: true ,
-    }
-  );
-
-  var dbg = false
+    amplitudeKey, null, { includeReferrer: true, includeUtm: true } );
   function dbgLog(aString) {
-    if (dbg || !production) {
+    if (!isProduction) {
       console.log(aString)
     }
   }
