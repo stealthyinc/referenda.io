@@ -99,17 +99,14 @@
       window.innerDocClick = false
     }
     //
-    var lastHashFromPress = ''
     window.addEventListener('hashchange', function(event) {
       var newHash = location.hash
-      // if (newHash !== lastHashFromPress) {
-        var eventProperties = (window.innerDocClick) ?
-          { 'trigger': 'swipe or nav button' } : { 'trigger': 'browser button' }
+      var eventProperties = (window.innerDocClick) ?
+        { 'trigger': 'swipe or nav button' } : { 'trigger': 'browser button' }
 
-          var eventName = `${newHash} Visited`
-          amplitude.getInstance().logEvent(eventName, eventProperties)
-          dbgLog(`${eventProperties.trigger} navigation action: ${eventName}`)
-      // }
+        var eventName = `${newHash} Visited`
+        amplitude.getInstance().logEvent(eventName, eventProperties)
+        dbgLog(`${eventProperties.trigger} navigation action: ${eventName}`)
 
       // Change the sign up header color
       var signUpHeaderButton = document.getElementById('signUpHeader')
@@ -157,8 +154,6 @@
     }
 
     function logButtonPress(caller, event=undefined) {
-      lastHashFromPress = getLinkName(caller)
-
       var buttonText = '<UnknownButton>'
       try {
         buttonText = (event !== undefined) ?
@@ -185,9 +180,9 @@
     }
 
     function logHeaderPress(caller) {
-      lastHashFromPress = getLinkName(caller)
+      var linkName = getLinkName(caller)
       var eventProperties = { 'trigger': 'header button' }
-      var eventName = `${lastHashFromPress} Visited`
+      var eventName = `${linkName} Visited`
       amplitude.getInstance().logEvent('Header Pressed', eventProperties)
       dbgLog(`${eventProperties.trigger} navigation action: ${eventName}`)
     }
@@ -204,7 +199,6 @@
     }
 
     function logLogoPress() {
-      lastHashFromPress = "#Home"
       var event = `Logo Pressed on ${getSlideName()} Slide.`
       dbgLog(`logLogoPress: ${event}`)
 
