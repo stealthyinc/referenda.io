@@ -28,6 +28,14 @@
   <!-- jQuery 3.3.1 -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+  <!-- MAPSVG -->
+  <link href="mapsvg/css/mapsvg.css" rel="stylesheet">
+  <link href="mapsvg/css/nanoscroller.css" rel="stylesheet">
+  <script src="mapsvg/js/jquery.js"></script>
+  <script src="mapsvg/js/jquery.mousewheel.min.js"></script>
+  <script src="mapsvg/js/jquery.nanoscroller.min.js"></script>
+  <script src="mapsvg/js/mapsvg.min.js"></script>
+
   <!-- Compressed Scripts -->
   <script src="js/slides.min.js?421331" type="text/javascript"></script>
 
@@ -67,7 +75,7 @@
   </style>
 
   <!-- Page Title -->
-  <title>Referenda - Winning Campaign Tools and an Electorate Social Network</title>
+  <title>Referenda - Empowering Movements</title>
 
   <!-- Amplitude Scripts -->
   <script src="js/amplitude.js" type="text/javascript"></script>
@@ -110,14 +118,21 @@
 
       // Change the sign up header color
       var signUpHeaderButton = document.getElementById('signUpHeader')
+      var campaignsHeaderButton = document.getElementById('campaignsHeader')
       if (!newHash || (newHash === '#Home') || (newHash === '#SignUp')) {
         signUpHeaderButton.style.color = 'black'
         signUpHeaderButton.style.backgroundColor = ''
-        signUpHeaderButton.style.fontWeight = 'normal'
+        signUpHeaderButton.style.fontWeight = 'bold'
+        campaignsHeaderButton.style.color = 'black'
+        campaignsHeaderButton.style.backgroundColor = ''
+        campaignsHeaderButton.style.fontWeight = 'bold'
       } else {
         signUpHeaderButton.style.color = 'white'
         signUpHeaderButton.style.backgroundColor = '#2196F3'
         signUpHeaderButton.style.fontWeight = 'bold'
+        campaignsHeaderButton.style.color = 'white'
+        campaignsHeaderButton.style.backgroundColor = '#28a776'
+        campaignsHeaderButton.style.fontWeight = 'bold'
       }
 
     }, false);
@@ -273,13 +288,14 @@
     </div>
     <div class="right">
       <ul class="menu uppercase trim">
-        <li><a href="#Fundraising" onclick="logHeaderPress(this)">Fundraising</a></li>
-        <li><a href="#Campaigning" onclick="logHeaderPress(this)">Campaigning</a></li>
-        <li><a href="#Organizing" onclick="logHeaderPress(this)">Organizing</a></li>
+        <!-- <li><a href="#Start" onclick="logHeaderPress(this)">Start Movement</a></li> -->
+        <!-- <li><a href="#Organize" onclick="logHeaderPress(this)">Organize Movement</a></li> -->
+        <!-- <li><a href="#Campaign" onclick="logHeaderPress(this)">Grow Movement</a></li> -->
         <!-- <li><a href="#Features" onclick="logHeaderPress(this)">Features</a></li> -->
-        <li><a href="#Testimonials" onclick="logHeaderPress(this)">Testimonials</a></li>
+        <!-- <li><a href="#Testimonials" onclick="logHeaderPress(this)">Testimonials</a></li> -->
         <!-- <li><a href="#Media" onclick="logHeaderPress(this)">Media</a></li> -->
-        <li><a href="#SignUp" id="signUpHeader" onclick="logHeaderPress(this)">Sign Up</a></li>
+        <li><a href="#Live" id="campaignsHeader" onclick="logHeaderPress(this)">Live Movements</a></li>
+        <li><a target="_blank" href="https://www.app.referenda.io" id="signUpHeader" onclick="logHeaderPress(this)">Sign Up</a></li>
         <li class="cropRight">
           <a href="http://twitter.com/stealthyinc"
              class="trimRight"
@@ -303,11 +319,12 @@
   <div class="content">
     <a href="#" class="logo"><svg width="37" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use></svg></a>
     <ul class="mainMenu margin-top-3">
-      <li><a href="#Fundraising">Fundraising</a></li>
-      <li><a href="#Campaigning">Campaigning</a></li>
-      <li><a href="#Organizing">Organizing</a></li>
-      <li><a href="#Testimonials">Testimonials</a></li>
-      <li><a href="#SignUp">Sign Up</a></li>
+      <li><a href="#Live">Live Movements</a></li>
+      <li><a href="#Start">Start Movement</a></li>
+      <li><a href="#Organize">Organize Movement</a></li>
+      <li><a href="#Grow">Grow Movement</a></li>
+      <!-- <li><a href="#Testimonials">Testimonials</a></li> -->
+      <li><a target="_blank" href="https://www.app.referenda.io">Sign Up</a></li>
     </ul>
   </div>
 </nav>
@@ -321,15 +338,15 @@
         <div class="fix-12-12">
           <ul class="flex fixedSpaces verticalCenter reverse">
             <li class="col-6-12 left middle">
-              <h1 class="ae-1 fromLeft">The tools you need to win today's campaigns.</h1>
+              <h1 class="ae-1 fromLeft">The tools you need to empower movements.</h1>
               <!-- <p class="ae-2 fromLeft"><span class="opacity-8"><i>Plus</i> a constituent social network to help you win again in the future.</span></p> -->
               <p class="ae-2 fromLeft"><span class="opacity-8">Built with <i>humane technology</i> that prioritizes privacy and data security.</span></p>
-              <a class="button blue gradient ae-3 fromCenter cropLeft"
+              <!-- <a class="button blue gradient ae-3 fromCenter cropLeft"
                  onclick="logButtonPress(this, event)"
-                 href="#SignUp">Sign Up</a>
-              <a class="button white ae-4 fromCenter"
+                 href="#SignUp">Sign Up</a> -->
+              <a class="button blue gradient ae-4 fromCenter"
                  onclick="logButtonPress(this, event)"
-                 href="#Fundraising">Learn More</a>
+                 href="#Start">Learn More</a>
             </li>
             <li class="col-6-12">
               <img class="ae-4 rounded" width="605" src="assets/img/07.png" alt="iPhones Thumbnail"/>
@@ -343,48 +360,49 @@
 </section>
 
 <!-- Slide 2 (#89) -->
-<section data-name="Fundraising" data-title="Fundraising" class="slide whiteSlide">
+<section data-name="Start" data-title="Start" class="slide whiteSlide">
   <div class="content">
     <div class="container">
       <div class="wrap">
-
         <div class="fix-12-12">
           <ul class="flex left">
+            <li class="col-4-12 center fromBottomLeft">
+              <!-- <img src="assets/img/funding.jpg" class="shadow rounded ae-8" alt="Image"/> -->
+              <video width="240" class="shadow rounded ae-8" alt="Video" autoplay loop muted>
+                <source src="assets/vid/donation.m4v" type="video/mp4">
+              </video>
+            </li>
+            <li class="col-2-12">&nbsp;</li>
             <li class="col-6-12 fromBottomLeft">
               <!--p class="opacity-6 margin-bottom-2 ae-1"></p-->
-              <h1 class="ae-2">Fundraising</h1>
-              <div class="ae-3"><p class="opacity-8">Powerful tools to get your campaigns started by helping you fundraise anywhere, anytime:</p></div>
+              <h1 class="ae-2">Start your movement</h1>
+              <div class="ae-3"><p class="opacity-8">Powerful tools to get your movement started and grow your audience:</p></div>
               <ul class="flex">
                 <li class="col-6-12 ae-3">
-                  <h3 class="margin-top-3">Collect Donations</h3>
-                  <p class="tiny opacity-6">Collect donations from credit cards, Apple and Google pay, and even Bitcoin!</p>
+                  <h3 class="margin-top-3">Fundraise Anywhere</h3>
+                  <p class="tiny opacity-6">Collect donations from credit cards, Apple or Google pay, and even Bitcoin!</p>
                 </li>
                 <li class="col-6-12 ae-4">
-                  <h3 class="margin-top-3">Sell Merchandise</h3>
-                  <p class="tiny opacity-6">Sell campaign merchandise directly in App or by sending a link.</p>
+                  <h3 class="margin-top-3">Social Platform</h3>
+                  <p class="tiny opacity-6">Get the power of a mobile app, website, and private social network in one place.</p>
                 </li>
                 <li class="col-6-12 ae-5 margin-top-3">
                   <a class="button blue gradient ae-3 fromCenter cropLeft"
                      onclick="logButtonPress(this, event)"
-                     href="#SignUp">Sign Up</a>
+                     target="_blank"
+                     href="https://www.app.referenda.io">Sign Up</a>
                 </li>
               </ul>
             </li>
-            <li class="col-1-12">&nbsp;</li>
-            <li class="col-5-12 bottom">
-              <img src="assets/img/funding.jpg" class="shadow rounded ae-8" alt="Image"/>
-              <!-- <img src="assets/img/funding.jpg" class="shadow rounded ae-8" alt="Image"/> -->
-            </li>
           </ul>
         </div>
-
       </div>
     </div>
   </div>
 </section>
 
 <!-- Slide 2 (#89) -->
-<section data-name="Campaigning" data-title="Campaigning" class="slide whiteSlide">
+<section data-name="Organize" data-title="Organize" class="slide whiteSlide">
   <div class="content">
     <div class="container">
       <div class="wrap">
@@ -392,60 +410,22 @@
         <div class="fix-12-12">
           <ul class="flex left">
             <li class="col-6-12 fromBottomLeft">
-              <h1 class="ae-2">Campaigning</h1>
-              <div class="ae-3"><p class="opacity-8">Reliable tools to grow and engage the electorate, ensuring they Get Out To Vote (GOTV). A few examples of what we offer:</p></div>
-              <ul class="flex">
-                <li class="col-6-12 ae-5">
-                  <h3 class="margin-top-3">Get Voters</h3>
-                  <p class="tiny opacity-6">Elections are won by getting voters to the polls. Referenda helps supporters distribute messages through their friend networks to virally grow.</p>
-                </li>
-                <li class="col-6-12 ae-4">
-                  <h3 class="margin-top-3">Sentiment Research</h3>
-                  <p class="tiny opacity-6">Customizable questionaires and visualization tools to understand electorate sentiment and issue importance.</p>
-                </li>
-                <li class="col-6-12 ae-5 margin-top-3">
-                  <a class="button blue gradient ae-3 fromCenter cropLeft"
-                     onclick="logButtonPress(this, event)"
-                     href="#SignUp">Sign Up</a>
-                </li>
-              </ul>
-            </li>
-            <li class="col-1-12">&nbsp;</li>
-            <li class="col-5-12 bottom">
-              <img src="assets/img/voter1.jpg" class="shadow rounded ae-8" alt="Image"/>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Slide 2 (#89) -->
-<section data-name="Organizing" data-title="Organizing" class="slide whiteSlide">
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-
-        <div class="fix-12-12">
-          <ul class="flex left">
-            <li class="col-6-12 fromBottomLeft">
-              <h1 class="ae-2">Organizing</h1>
+              <h1 class="ae-2">Organize your movement</h1>
               <div class="ae-3"><p class="opacity-8">Innovative tools to grow and motivate your staff and volunteers:</p></div>
               <ul class="flex">
                 <li class="col-6-12 ae-3">
                   <h3 class="margin-top-3">Recruit Volunteers</h3>
-                  <p class="tiny opacity-6">Passionate supporters make great volunteers who can multiply your campaign effort with little overhead.</p>
+                  <p class="tiny opacity-6">Passionate supporters make great volunteers who can multiply your movement's effort with little overhead.</p>
                 </li>
                 <li class="col-6-12 ae-4">
                   <h3 class="margin-top-3">High Scores</h3>
-                  <p class="tiny opacity-6">People love to compete and when it's done right amongst your campaign volunteers, it's a powerful motivating force.</p>
+                  <p class="tiny opacity-6">People love to compete and when it's done right amongst your supporters, it's a powerful motivating force.</p>
                 </li>
                 <li class="col-6-12 ae-5 margin-top-3">
                   <a class="button blue gradient ae-3 fromCenter cropLeft"
                      onclick="logButtonPress(this, event)"
-                     href="#SignUp">Sign Up</a>
+                     target="_blank"
+                     href="https://www.app.referenda.io">Sign Up</a>
                 </li>
               </ul>
             </li>
@@ -461,32 +441,40 @@
   </div>
 </section>
 
-<!-- Slide 3 (#80) -->
-<section data-name="Testimonials" data-title="Testimonials" class="slide fade-6 kenBurns whiteSlide">
+<!-- Slide 2 (#89) -->
+<section data-name="Grow" data-title="Grow" class="slide whiteSlide">
   <div class="content">
     <div class="container">
       <div class="wrap">
 
-        <div class="fix-10-12">
-          <h1 class="ae-1 fromLeft">Testimonials</h1>
-          <div class="ae-2 fromLeft">
-            <p class="opacity-8">See what customers are saying about Referenda</p>
-          </div>
-        </div>
-
-        <div class="fix-12-12 margin-top-5">
-          <ul class="flex grid-80 fixedSpaces equal reverse">
-            <li class="col-6-12">
-              <div class="box-80 padding-4 equalElement left ae-3 rounded">
-                <p class="ae-5"><span class="opacity-8">"Referenda is designed to enable representatives to be proximate to their constituents, allowing meaningful communications without the well known privacy risks and irrelevant noise inherent in current social media platforms."</span></p>
-                <div class="margin-top-5 ae-6">
-                  <h3>Agatha Bacelar</h3>
-                  <p class="tiny opacity-6 cropBottom">2020 Candidate for US Congress CA 12</p>
-                </div>
-              </div>
+        <div class="fix-12-12">
+          <ul class="flex left">
+            <li class="col-4-12 center fromBottomRight">
+              <!-- <img src="assets/img/funding.jpg" class="shadow rounded ae-8" alt="Image"/> -->
+              <video width="240" class="shadow rounded ae-8" alt="Video" autoplay loop muted>
+                <source src="assets/vid/feed.m4v" type="video/mp4">
+              </video>
             </li>
-            <li class="col-6-12">
-              <a href="/agatha"><div class="rounded shadow wide cover equalElement popupTrigger ae-4 padding-14" data-popup-id="80-2" style="background:url(assets/img/agatha.png);"></div></a>
+            <li class="col-2-12">&nbsp;</li>
+            <li class="col-6-12 fromBottomRight">
+              <h1 class="ae-2">Grow your movement</h1>
+              <div class="ae-3"><p class="opacity-8">Reliable tools to grow and engage the people that really matter to your movement:</p></div>
+              <ul class="flex">
+                <li class="col-6-12 ae-5">
+                  <h3 class="margin-top-3">Humans Only</h3>
+                  <p class="tiny opacity-6">Membership tokens help to avoid trolls, bots, and foreign influences that derail discourse.</p>
+                </li>
+                <li class="col-6-12 ae-4">
+                  <h3 class="margin-top-3">True Sentiment</h3>
+                  <p class="tiny opacity-6">Customizable questionaires and visualizations to uncover factual sentiment by stakeholders.</p>
+                </li>
+                <li class="col-6-12 ae-5 margin-top-3">
+                  <a class="button blue gradient ae-3 fromCenter cropLeft"
+                     onclick="logButtonPress(this, event)"
+                     target="_blank"
+                     href="https://www.app.referenda.io">Sign Up</a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -496,8 +484,32 @@
   </div>
 </section>
 
+<!-- Slide 3 (#80) -->
+<section data-name="Live" data-title="Live" class="slide fade-6 kenBurns whiteSlide">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        <div class="fix-10-12">
+          <h1 class="ae-1 fromLeft">Live Movements</h1>
+          <!-- <img class="wide equalElement ae-4" src="assets/img/world_dot.svg" /> -->
+          <div class="ae-2 fromLeft">
+            <p class="opacity-8">Explore current movements on Referenda</p>
+          </div>
+          <div id="mapsvg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+jQuery("#mapsvg").mapSvg({markerLastID: 14,width: 2100,height: 1312.5,colors: {baseDefault: "#000000",background: "#fffffff",selected: 40,hover: 20,directory: "#fafafa",status: {}},viewBox: [0,0,2100,1312.5],zoom: {on: false,limit: [0,10],delta: 2,buttons: {on: true,location: "hide"},mousewheel: true},scroll: {on: true,limit: true,background: false,spacebar: false},tooltips: {mode: "off",on: false,priority: "local",position: "bottom-right"},popovers: {mode: "off",on: false,priority: "local",position: "top",centerOn: true,width: 300,maxWidth: 50,maxHeight: 50,resetViewboxOnClose: true,mobileFullscreen: true},gauge: {on: false,labels: {low: "low",high: "high"},colors: {lowRGB: {r: 85,g: 0,b: 0,a: 1},highRGB: {r: 238,g: 0,b: 0,a: 1},low: "#550000",high: "#ee0000",diffRGB: {r: 153,g: 0,b: 0,a: 0}},min: 0,max: false},source: "/mapsvg/maps/user-uploads/world_dot.svg",title: "World_dot",markers: [{id: "marker_1",attached: true,isLink: false,tooltip: "<div>\n  <img height=\"50\" src=\"https://www.referenda.io/assets/img/agatha.png\" />\n</div>",href: "https://www.app.referenda.io/agatha",target: "blank",data: {},src: "/mapsvg/markers/pin1_red.png",width: 15,height: 24,x: 293.6585365853658,y: 553.810975609756},{id: "marker_2",attached: true,isLink: false,tooltip: "<div>\n  <img height=\"50\" src=\"https://www.referenda.io/assets/img/nabilah.jpg\" />\n</div>",href: "https://www.app.referenda.io/nabilah",target: "blank",data: {},src: "/mapsvg/markers/pin1_red.png",width: 15,height: 24,x: 498.5365853658536,y: 632.3475609756098},{id: "marker_3",attached: true,isLink: false,tooltip: "<div>\n  <img height=\"50\" src=\"https://www.referenda.io/assets/img/campa.jpg\" />\n</div>",data: {},src: "/mapsvg/markers/pin1_grey.png",width: 15,height: 24,x: 324.390243902439,y: 652.8353658536585},{id: "marker_5",attached: true,isLink: false,data: {},src: "/mapsvg/markers/pin1_black.png",width: 15,height: 24,x: 1041.4634146341464,y: 401.85975609756093},{id: "marker_6",attached: true,isLink: false,data: {},src: "/mapsvg/markers/pin1_black.png",width: 15,height: 24,x: 1300.9756097560976,y: 630.640243902439},{id: "marker_7",attached: true,isLink: false,data: {},src: "/mapsvg/markers/pin1_black.png",width: 15,height: 24,x: 1406.8292682926829,y: 630.640243902439},{id: "marker_8",attached: true,isLink: false,data: {},src: "/mapsvg/markers/pin1_black.png",width: 15,height: 24,x: 1751.7073170731705,y: 565.7621951219512},{id: "marker_10",attached: true,isLink: false,tooltip: "<div>\n  <img height=\"50\" src=\"https://www.referenda.io/assets/img/guaido.jpg\" />\n</div>",href: "https://www.app.referenda.io/guaido",target: "blank",data: {},src: "/mapsvg/markers/pin1_grey.png",width: 15,height: 24,x: 621.4634146341463,y: 770.640243902439},{id: "marker_12",attached: true,isLink: false,data: {},src: "/mapsvg/markers/pin1_black.png",width: 15,height: 24,x: 1352.1951219512193,y: 606.7378048780488},{id: "marker_13",attached: true,isLink: false,data: {},src: "/mapsvg/markers/pin1_black.png",width: 15,height: 24,x: 1085.8536585365853,y: 825.2743902439024},{id: "marker_14",attached: true,isLink: false,data: {},src: "/mapsvg/markers/pin1_black.png",width: 15,height: 24,x: 1150.7317073170732,y: 357.4695121951219}],responsive: true});
+});
+</script>
+
 <!-- White Slide #55 -->
-<section data-name="SignUp" data-title="Sign Up" class="slide fade-6 whiteSlide">
+<!-- <section data-name="SignUp" data-title="Sign Up" class="slide fade-6 whiteSlide">
   <div class="content">
     <div class="container">
       <div class="wrap">
@@ -505,8 +517,6 @@
         <h1>Get in touch to learn more about our revolutionary social network.</h1>
         <div class="form-55">
           <div class="pad shadow left selected">
-            <!-- TODO get email working by comment/debug the following line -->
-            <!-- <form action="ajax-email.php" id="contact-form" method="post" class="slides-form wide" data-ajax-form="true"> -->
             <form id="contact-form" method="post" class="slides-form wide" data-ajax-form="true">
               <ul class="grid noSpaces">
                 <li class="col-6-12 form-55-input-1">
@@ -538,7 +548,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- Panel Bottom #10 -->
 <nav class="panel bottom lastSlideOnly forceMobileView">
@@ -590,11 +600,12 @@
   <div class="content">
     <a href="#" class="logo"><svg width="37" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use></svg></a>
     <ul class="mainMenu margin-top-3">
-      <li><a href="#Fundraising">Fundraising</a></li>
-      <li><a href="#Campaigning">Campaigning</a></li>
-      <li><a href="#Organizing">Organizing</a></li>
-      <li><a href="#Testimonials">Testimonials</a></li>
-      <li><a href="#SignUp">Sign Up</a></li>
+      <li><a href="#Live">Live Movements</a></li>
+      <li><a href="#Start">Start Movement</a></li>
+      <li><a href="#Organize">Organize Movement</a></li>
+      <li><a href="#Grow">Grow Movement</a></li>
+      <!-- <li><a href="#Testimonials">Testimonials</a></li> -->
+      <li><a target="_blank" href="https://www.app.referenda.io">Sign Up</a></li>
     </ul>
   </div>
 </nav>
@@ -604,16 +615,23 @@
   function setInitialButtonStyle() {
     // Change the sign up header color
     var signUpHeaderButton = document.getElementById('signUpHeader')
+    var campaignsHeaderButton = document.getElementById('campaignsHeader')
 
     var slideName = getSlideName()
     if (!slideName || (slideName === '#Home') || (slideName === '#SignUp')) {
       signUpHeaderButton.style.color = 'black'
       signUpHeaderButton.style.backgroundColor = ''
-      signUpHeaderButton.style.fontWeight = 'normal'
+      signUpHeaderButton.style.fontWeight = 'bold'
+      campaignsHeaderButton.style.color = 'black'
+      campaignsHeaderButton.style.backgroundColor = ''
+      campaignsHeaderButton.style.fontWeight = 'bold'
     } else {
       signUpHeaderButton.style.color = 'white'
       signUpHeaderButton.style.backgroundColor = '#2196F3'
       signUpHeaderButton.style.fontWeight = 'bold'
+      campaignsHeaderButton.style.color = 'white'
+      campaignsHeaderButton.style.backgroundColor = '#28a776'
+      campaignsHeaderButton.style.fontWeight = 'bold'
     }
   }
 
