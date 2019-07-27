@@ -255,6 +255,8 @@
 </head>
 <body class="slides cards smooth smoothScroll animated">
 
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"2c66478c6ad0cd8a1d9cee2ad","lid":"0b3a9e2e22","uniqueMethods":true}) })</script>
+
 <!-- Loading Progress Bar -->
 <div class="progress-bar blue"></div>
 
@@ -282,33 +284,25 @@
 </nav>
 
 <!-- Panel Top #library/panel/panel-top-09.html -->
-<nav class="panel top hideOnScroll hideForLastSlide">
+<nav class="panel top white hideOnScroll">
   <div class="sections desktop">
     <div class="left">
       <a href="#Home"
-         title="Slides Framework"
+         title="Referenda"
          onclick="logLogoPress()">
         <svg style="width:150px;height:50px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
       </a>
     </div>
     <div class="right">
       <ul class="menu uppercase trim">
-        <!-- <li><a href="#Start" onclick="logHeaderPress(this)">Start Movement</a></li> -->
+        <!-- <li><a href="#Start" onclick="logHeaderPress(this)">Sign In</a></li> -->
         <!-- <li><a href="#Organize" onclick="logHeaderPress(this)">Organize Movement</a></li> -->
         <!-- <li><a href="#Campaign" onclick="logHeaderPress(this)">Grow Movement</a></li> -->
         <!-- <li><a href="#Features" onclick="logHeaderPress(this)">Features</a></li> -->
         <!-- <li><a href="#Testimonials" onclick="logHeaderPress(this)">Testimonials</a></li> -->
         <!-- <li><a href="#Media" onclick="logHeaderPress(this)">Media</a></li> -->
-        <li><a href="#Live" id="campaignsHeader" onclick="logHeaderPress(this)">Live Movements</a></li>
-        <li><a target="_blank" href="https://www.app.referenda.io" id="signUpHeader" onclick="logHeaderPress(this)">Start Movement</a></li>
-        <li class="cropRight">
-          <a href="http://twitter.com/stealthyinc"
-             class="trimRight"
-             target="_blank"
-             onclick="logHeaderPress(this)">
-            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg>
-          </a>
-        </li>
+        <!-- <li><a target="_blank" href="https://www.app.referenda.io" id="campaignsHeader" onclick="logHeaderPress(this)">Log In</a></li> -->
+        <li style="margin-top:5px"><a target="_blank" href="https://www.app.referenda.io" id="signUpHeader" onclick="logHeaderPress(this)">Sign In</a></li>
       </ul>
     </div>
   </div>
@@ -323,9 +317,9 @@
   <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
   <div class="content">
     <!-- <a href="#" class="logo"><svg width="37" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use></svg></a> -->
-    <a href="https://testflight.apple.com/join/uhAmP231" target="_blank" class="button hollow"><img src="assets/img/appstore.jpg" width="112" height="42"/></a>
+    <!-- <a href="https://testflight.apple.com/join/uhAmP231" target="_blank" class="button hollow"><img src="assets/img/appstore.jpg" width="112" height="42"/></a> -->
     <ul class="mainMenu margin-top-3">
-      <li><a target="_blank" href="https://www.app.referenda.io">Start Movement</a></li>
+      <li><a target="_blank" href="https://www.app.referenda.io">Sign In</a></li>
       <li><a href="#Grow">Grow Movement</a></li>
       <li><a href="#Organize">Organize Movement</a></li>
       <li><a href="#Fund">Fund Movement</a></li>
@@ -427,7 +421,7 @@
                   <a class="button blue gradient ae-3 fromCenter cropLeft"
                      onclick="logButtonPress(this, event)"
                      target="_blank"
-                     href="https://www.app.referenda.io">Sign Up</a>
+                     href="https://www.app.referenda.io">Sign In</a>
                 </li>
               </ul>
             </li>
@@ -462,7 +456,7 @@
                   <a class="button blue gradient ae-3 fromCenter cropLeft"
                      onclick="logButtonPress(this, event)"
                      target="_blank"
-                     href="https://www.app.referenda.io">Sign Up</a>
+                     href="https://www.app.referenda.io">Sign In</a>
                 </li>
               </ul>
             </li>
@@ -512,7 +506,7 @@
                   <a class="button blue gradient ae-3 fromCenter cropLeft"
                      onclick="logButtonPress(this, event)"
                      target="_blank"
-                     href="https://www.app.referenda.io">Sign Up</a>
+                     href="https://www.app.referenda.io">Sign In</a>
                 </li>
               </ul>
             </li>
@@ -547,7 +541,7 @@
                   <a class="button blue gradient ae-3 fromCenter cropLeft"
                      onclick="logButtonPress(this, event)"
                      target="_blank"
-                     href="https://www.app.referenda.io">Sign Up</a>
+                     href="https://www.app.referenda.io">Sign In</a>
                 </li>
               </ul>
             </li>
@@ -590,7 +584,7 @@ jQuery("#mapsvg").mapSvg({markerLastID: 14,width: 2100,height: 1312.5,colors: {b
 </script>
 
 <!-- White Slide #55 -->
-<!-- <section data-name="SignUp" data-title="Sign Up" class="slide fade-6 whiteSlide">
+<!-- <section data-name="SignUp" data-title="Sign In" class="slide fade-6 whiteSlide">
   <div class="content">
     <div class="container">
       <div class="wrap">
@@ -636,18 +630,18 @@ jQuery("#mapsvg").mapSvg({markerLastID: 14,width: 2100,height: 1312.5,colors: {b
 <!-- Panel Bottom #10 -->
 <nav class="panel bottom lastSlideOnly forceMobileView">
   <div class="sections desktop">
-    <div class="left">
-      <a href="https://testflight.apple.com/join/uhAmP231" target="_blank" class="button hollow"><img src="assets/img/appstore.jpg" width="112" height="42"/></a>
-    </div>
     <!-- <div class="left">
+      <a href="https://testflight.apple.com/join/uhAmP231" target="_blank" class="button hollow"><img src="assets/img/appstore.jpg" width="112" height="42"/></a>
+    </div> -->
+    <div class="left">
       <span class="opacity-8">
         <a href="#Home"
-           title="Slides Framework"
+           title="Referenda"
            onclick="logLogoPress()">
           <svg style="width:150px;height:25px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
         </a>
       </span>
-    </div> -->
+    </div>
     <div class="right">
       <ul class="menu uppercase trim">
         <li>&copy; 2019 Stealthy Inc.</li>
@@ -688,7 +682,7 @@ jQuery("#mapsvg").mapSvg({markerLastID: 14,width: 2100,height: 1312.5,colors: {b
     <!-- <a href="#" class="logo"><svg width="37" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use></svg></a> -->
     <a href="https://testflight.apple.com/join/uhAmP231" target="_blank" class="button hollow"><img src="assets/img/appstore.jpg" width="112" height="42"/></a>
     <ul class="mainMenu margin-top-3">
-      <li><a target="_blank" href="https://www.app.referenda.io">Sign Up</a></li>
+      <li><a target="_blank" href="https://www.app.referenda.io">Sign In</a></li>
       <li><a href="#Grow">Grow Movement</a></li>
       <li><a href="#Organize">Organize Movement</a></li>
       <li><a href="#Fund">Fund Movement</a></li>
@@ -726,16 +720,16 @@ jQuery("#mapsvg").mapSvg({markerLastID: 14,width: 2100,height: 1312.5,colors: {b
     startDelay: 1000,
     loop: true,
     loopCount: 2,
-    onComplete: function(self) { console.log('onCmplete ' + self) },
-    preStringTyped: function(pos, self) { console.log('preStringTyped ' + pos + ' ' + self); },
-    onStringTyped: function(pos, self) { console.log('onStringTyped ' + pos + ' ' + self) },
-    onLastStringBackspaced: function(self) { console.log('onLastStringBackspaced ' + self) },
-    onTypingPaused: function(pos, self) { console.log('onTypingPaused ' + pos + ' ' + self) },
-    onTypingResumed: function(pos, self) { console.log('onTypingResumed ' + pos + ' ' + self) },
-    onReset: function(self) { console.log('onReset ' + self) },
-    onStop: function(pos, self) { console.log('onStop ' + pos + ' ' + self) },
-    onStart: function(pos, self) { console.log('onStart ' + pos + ' ' + self) },
-    onDestroy: function(self) { console.log('onDestroy ' + self) }
+    // onComplete: function(self) { console.log('onCmplete ' + self) },
+    // preStringTyped: function(pos, self) { console.log('preStringTyped ' + pos + ' ' + self); },
+    // onStringTyped: function(pos, self) { console.log('onStringTyped ' + pos + ' ' + self) },
+    // onLastStringBackspaced: function(self) { console.log('onLastStringBackspaced ' + self) },
+    // onTypingPaused: function(pos, self) { console.log('onTypingPaused ' + pos + ' ' + self) },
+    // onTypingResumed: function(pos, self) { console.log('onTypingResumed ' + pos + ' ' + self) },
+    // onReset: function(self) { console.log('onReset ' + self) },
+    // onStop: function(pos, self) { console.log('onStop ' + pos + ' ' + self) },
+    // onStart: function(pos, self) { console.log('onStart ' + pos + ' ' + self) },
+    // onDestroy: function(self) { console.log('onDestroy ' + self) }
   });
 </script>
 
@@ -758,7 +752,7 @@ jQuery("#mapsvg").mapSvg({markerLastID: 14,width: 2100,height: 1312.5,colors: {b
       signUpHeaderButton.style.color = 'white'
       signUpHeaderButton.style.backgroundColor = '#2196F3'
       signUpHeaderButton.style.fontWeight = 'bold'
-      signUpHeaderButton.style.fontSize = '16px'
+      signUpHeaderButton.style.fontSize = '20px'
       campaignsHeaderButton.style.color = 'white'
       campaignsHeaderButton.style.backgroundColor = '#28a776'
       campaignsHeaderButton.style.fontWeight = 'bold'
